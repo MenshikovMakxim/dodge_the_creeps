@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ude6i5wxije4"]
+[gd_scene load_steps=6 format=3 uid="uid://ude6i5wxije4"]
 
 [ext_resource type="PackedScene" uid="uid://mpdgjbdvuki" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dbyqvqyclig6g" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://d32fxwnvijvar" path="res://mob.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bya5laabl0pxf" path="res://hud.tscn" id="4_1bvp3"]
 
 [sub_resource type="Curve2D" id="Curve2D_1bvp3"]
 _data = {
@@ -18,7 +19,7 @@ mob_scene = ExtResource("2_h2yge")
 position = Vector2(240, 450)
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.831
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
@@ -36,7 +37,7 @@ curve = SubResource("Curve2D_1bvp3")
 metadata/_edit_lock_ = true
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2(-0.108002, 11.9226)
+position = Vector2(-0.108, 3.96685)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 224.0
@@ -44,7 +45,10 @@ offset_top = 104.0
 offset_right = 264.0
 offset_bottom = 127.0
 
+[node name="HUD" parent="." instance=ExtResource("4_1bvp3")]
+
 [connection signal="hit" from="Player" to="." method="game_overr"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
