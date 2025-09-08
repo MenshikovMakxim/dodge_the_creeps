@@ -6,10 +6,12 @@ var bestScore = 0
 
 func new_game():
 	score = 0
+	$Music.play()
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
+	get_tree().call_group("mobs", "queue_free")
 	
 func _on_score_timer_timeout() -> void:
 	score += 1
@@ -39,6 +41,8 @@ func _on_mob_timer_timeout() -> void:
 
 	
 func game_overr() -> void:
+	$Music.stop()
+	$DeathSound.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
