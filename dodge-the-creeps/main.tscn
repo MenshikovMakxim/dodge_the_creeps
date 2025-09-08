@@ -6,21 +6,16 @@
 
 [sub_resource type="Curve2D" id="Curve2D_1bvp3"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 479, 718)
+"points": PackedVector2Array(0, 0, 0, 0, -0.108, 3.96685, 0, 0, 0, 0, 462.612, 3.96685, 0, 0, 0, 0, 462.612, 719.989, 0, 0, 0, 0, -0.108, 719.989, 0, 0, 0, 0, -0.108, 3.96685)
 }
-point_count = 2
+point_count = 5
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h2yge")
 mob_scene = ExtResource("2_h2yge")
 
 [node name="Player" parent="." instance=ExtResource("1_0xm2m")]
-visible = false
-position = Vector2(128, 77)
-
-[node name="Mob" parent="." instance=ExtResource("2_h2yge")]
-visible = false
-position = Vector2(98, 187)
+position = Vector2(240, 450)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -35,12 +30,21 @@ one_shot = true
 position = Vector2(240, 450)
 
 [node name="MobPath" type="Path2D" parent="."]
+position = Vector2(0.112033, -3.98889)
+scale = Vector2(1.03734, 1.00556)
 curve = SubResource("Curve2D_1bvp3")
 metadata/_edit_lock_ = true
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-rotation = 0.982472
+position = Vector2(-0.108002, 11.9226)
 
+[node name="Label" type="Label" parent="."]
+offset_left = 224.0
+offset_top = 104.0
+offset_right = 264.0
+offset_bottom = 127.0
+
+[connection signal="hit" from="Player" to="." method="game_overr"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

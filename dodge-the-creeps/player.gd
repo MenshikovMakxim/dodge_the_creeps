@@ -5,11 +5,9 @@ signal hit
 @export var speed = 400
 var screen_size
 
-
-
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-	hide()
+	#hide()
 
 func _process(delta):
 	var velocity = Vector2.ZERO
@@ -41,7 +39,7 @@ func _process(delta):
 	
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body):
 	hide()
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)

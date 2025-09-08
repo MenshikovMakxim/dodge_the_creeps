@@ -3,15 +3,14 @@ extends Node2D
 @export var mob_scene: PackedScene
 var score
 
-func game_over():
-	$ScoreTimer.stop()
-	$MobTimer.stop()
+func _ready() -> void:
+	new_game()
 
 func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
-
+	
 func _on_score_timer_timeout() -> void:
 	score += 1
 
@@ -24,7 +23,7 @@ func _on_mob_timer_timeout() -> void:
 	var mob_spawn_location = $MobPath/MobSpawnLocation
 	
 	mob_spawn_location.progress_ratio = randf()
-	mob.position = mob_spawn_location
+	mob.position = mob_spawn_location.position
 	
 	var direction = mob_spawn_location.rotation + PI/2
 	
@@ -35,3 +34,9 @@ func _on_mob_timer_timeout() -> void:
 	mob.linear_velocity = velocity.rotated(direction)
 	
 	add_child(mob)
+
+
+	
+func game_overr() -> void:
+	$ScoreTimer.stop()
+	$MobTimer.stop()
