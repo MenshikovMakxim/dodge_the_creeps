@@ -2,9 +2,7 @@ extends Node2D
 
 @export var mob_scene: PackedScene
 var score
-
-func _ready() -> void:
-	new_game()
+var bestScore = 0
 
 func new_game():
 	score = 0
@@ -44,3 +42,6 @@ func game_overr() -> void:
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
+	if score > bestScore:
+		bestScore = score
+		$HUD.show_best_score(bestScore)
