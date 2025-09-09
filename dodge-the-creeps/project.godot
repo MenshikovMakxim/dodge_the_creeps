@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Dodge the creeps"
+config/name="Dodge the Creeps!"
 run/main_scene="uid://ude6i5wxije4"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://mhrorxgb86bb"
-config/windows_native_icon="res://icon.ico"
+config/icon="uid://c5wi5725fy4vn"
+config/macos_native_icon="uid://c5wi5725fy4vn"
+config/windows_native_icon="uid://c5wi5725fy4vn"
 
 [display]
 
