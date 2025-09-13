@@ -21,7 +21,6 @@ config/windows_native_icon="res://icon256x256.ico"
 
 window/size/viewport_width=480
 window/size/viewport_height=720
-window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 window/handheld/orientation=1

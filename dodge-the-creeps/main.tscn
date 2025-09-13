@@ -26,6 +26,7 @@ offset_bottom = 720.0
 color = Color(0.178156, 0.305596, 0.28815, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_0xm2m")]
+visible = false
 position = Vector2(240, 450)
 speed = 200
 
@@ -64,8 +65,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.007
 anchor_right = 1.0
+offset_left = -1.0
 offset_top = -1.904
-offset_right = 0.0
+offset_right = -1.0
 offset_bottom = 0.0
 mouse_filter = 2
 joystick_mode = 1
