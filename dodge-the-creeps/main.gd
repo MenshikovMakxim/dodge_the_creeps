@@ -4,11 +4,15 @@ extends Node2D
 var score
 var bestScore = 0
 
+func _ready() -> void:
+	$Joystick.hide()
+
 func new_game():
 	score = 0
 	$Music.play()
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	$Joystick.show()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
 	get_tree().call_group("mobs", "queue_free")
@@ -46,6 +50,7 @@ func game_overr() -> void:
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
+	$Joystick.hide()
 	if score > bestScore:
 		bestScore = score
 		$HUD.show_best_score(bestScore)
